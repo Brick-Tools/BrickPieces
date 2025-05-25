@@ -1,0 +1,96 @@
+:root {
+    --textColor: 222, 222, 222;
+    /* --textColor: rgb(222, 222, 222); */
+    --backgroundColor: black;
+    --link: #007bff;
+    --linkVisited: #afd6ff;
+        
+    --titleBackground: rgba(0,123,255, .6);
+
+    --cardBackground:  rgba(08,08,08,0.95);
+
+    --color-card: linear-gradient(0deg, hsl(0, 0%, 95%), hsl(0, 0%, 100%));
+}
+  
+.light-mode {
+--textColor: 0, 0, 0;
+--backgroundColor: white;
+--link: #006bbd;
+--linkVisited: #002547;
+}
+
+html {
+    background-color: var(--backgroundColor);
+    background-image: url("images/wallpaperDarkA2x.webp");
+
+    color: rgb(var(--textColor));
+    font-family: 'Raleway', sans-serif;
+
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;    
+}
+body {
+    /* background-size: 314%; */
+    background-size: cover;
+    margin: 0;
+    /* margin-top: 0; */
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+#header {
+    background-color: var(--titleBackground);
+    backdrop-filter: blur(2px);
+    /* margin: 0;
+    padding: 0; */
+    /* position: fixed; */
+    width: 100%;
+    position: sticky;
+    top: 0;
+    display: flex;
+    z-index: 999;
+    gap: 1rem;
+}
+#header img {
+    width: 80px;
+    height: 80px;
+    padding: 0 8px;
+}
+.header-left {
+    display: flex;
+}
+
+/* MARK: Cards */
+.cards {
+    /* display: flex;
+    gap: 1rem;
+    flex-wrap: wrap; */
+
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(214px, 1fr));
+
+    padding: 0 32rem;
+
+    /* border: 1px solid rebeccapurple; */
+}
+
+.card {
+    background-color: var(--cardBackground);
+    border: 1px solid rgb(31, 41, 59);
+    border-radius: 1rem;
+    backdrop-filter: blur(2px);
+    
+    /* flex: 1 1 auto; /* flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
+}
+.card h1{
+    padding: 0 1rem;
+}
+
+.card img {
+    width: 100%;
+    /* background-color: rebeccapurple; */
+}

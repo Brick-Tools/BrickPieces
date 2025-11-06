@@ -19,12 +19,39 @@
 --linkVisited: #002547;
 }
 
+.pointer {
+    cursor: pointer;
+}
+.no-select {
+    user-select: none;
+}
+.copy {
+    cursor: copy;
+}
+.inline-edge {
+    display: flex;
+    justify-content: space-between;
+}
+ a {
+    color: #92ebff;
+ }
+ a:visited {
+    color: #c58af9;
+ }
+
+/* @import url('https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap'); */
+.raleway {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 html {
     background-color: var(--backgroundColor);
     background-image: url("images/wallpaperDarkA2x.webp");
 
     color: rgb(var(--textColor));
-    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Raleway', sans-serif; */
 
     height: 100%;
     width: 100%;
@@ -42,17 +69,19 @@ body {
   }
 
 #header {
-    background-color: var(--titleBackground);
-    backdrop-filter: blur(2px);
     /* margin: 0;
     padding: 0; */
     /* position: fixed; */
     width: 100%;
     position: sticky;
     top: 0;
-    display: flex;
     z-index: 999;
     gap: 1rem;
+}
+.banner {
+    display: flex;
+    background-color: var(--titleBackground);
+    backdrop-filter: blur(2px);
 }
 #header img {
     width: 80px;
@@ -62,35 +91,105 @@ body {
 .header-left {
     display: flex;
 }
+.search {
+    display: flex;
+    justify-content: center;
+}
+input {
+    color: var(--textColor);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    border: 1px solid gray;
+    border-radius: 0.5em;
+    padding: .5em;
+    /* margin-top: 0.5rem; */
+    /* margin-bottom: 0.5rem; */
+    margin: 0.5rem;
+}
+#search {
+    width: 32rem;
+    font-size: 16px;
+}
 
 /* MARK: Cards */
 .cards {
     /* display: flex;
     gap: 1rem;
     flex-wrap: wrap; */
+    padding: 0 1rem;
 
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(214px, 1fr));
+    
+    /* padding: 0 32rem; */
 
-    padding: 0 1rem;
+    /* max-width: 1600px; */
+    /* min-width: 512px; */
+    width: min(100%, 1600px);
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    justify-content: center;
 
     /* border: 1px solid rebeccapurple; */
 }
 
 .card {
+    max-width: 512px;
+    margin: 0 auto;
+
     background-color: var(--cardBackground);
     border: 1px solid rgb(31, 41, 59);
     border-radius: 1rem;
     backdrop-filter: blur(2px);
-    
+
+    display: flex;
+    flex-direction: column;
+    /* padding: 0.5rem; */
+
     /* flex: 1 1 auto; /* flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
+
+    max-width: 100%;
+}
+.card.replaced {
+    background: rgba(12, 10, 6, 0.95);   /* subtle brown tint */
+    border: 1px solid rgb(92, 72, 32);   /* muted amber edge */
+}
+.card.retired {
+    background: rgba(14,8,8,0.95);
+    border: 1px solid rgb(31, 41, 59);
+    /* border: 1px solid rgb(150, 60, 80); */
+}
+
+.info {
+    padding: 1rem 1rem;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.info input {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
 }
 .card h1{
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
+    margin: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 22px;
 }
 
 .card img {
     width: 100%;
+    aspect-ratio: 1 / 1;       /* keeps a square box */
+    width: 100%;               /* fills the grid cell width */
+    height: auto;
+    object-fit: cover;         /* crops nicely if aspect ratio mismatches */
+    display: block;            /* removes inline gap below images */
     /* background-color: rebeccapurple; */
 }

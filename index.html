@@ -7,19 +7,31 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="icon" type="image/webp" href="images/BrickPieces 890.png">
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
-    <script src='script.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap" rel="stylesheet">
 </head>
-<body>
+<!-- TODO -->
+ <!-- add tooth 87747 -->
+<body class="raleway">
     <div id="header">
-        <div class="header-left">
-            <img src="images/BrickPieces.webp" alt="">
-            <h1>Brick Pieces</h1>
+        <div class="banner">
+            <div class="header-left">
+                <img src="images/BrickPieces.webp" alt="">
+                <h1>Brick Pieces</h1>
+            </div>
+            <div class="header-middle">
+            </div>
+            <div class="header-right">
+            </div>
         </div>
-        <div class="header-middle"></div>
-        <div class="header-right">
+        <div class="search">
+            <input type="text" id="search" placeholder="Search" class="search" autocomplete="off" >
         </div>
     </div>
     <div id="cards" class="cards">
     </div>
+    <script src='script.js'></script>
 </body>
 </html>

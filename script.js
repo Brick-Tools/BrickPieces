@@ -12,27 +12,10 @@ const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 pieces = []
 // piecesList = []
 async function getPieces() {
-  // get number of rows in table
-  // const { count:numRows, errorCount } = await supabase
-    // .from('brickPieces')
-  //   .select('*', { count: 'exact', head: true }) // head: true avoids fetching all data
-  //   .not("latest_year", "is", null)
-  // if (errorCount) {
-  //   console.error(errorCount)
-  //   return
-  // }
-  // console.log('Number of rows:', numRows)
-
-  // cardCount = 0
-
   // load first 20 to make loading time feel quicker
   const { data: response0, error0 } = await supabase
     .from("brickPiecesStart")
     .select("*")
-    // .not("latest_year", "is", null)
-    // .order("latest_year", { ascending: false })
-    // .order("id", { ascending: true })
-    // .range(0, 19)
     console.log("db response0:", response0)
       // cardCount +=20
       if (error0) {
@@ -49,10 +32,6 @@ async function getPieces() {
   const { data: response, error } = await supabase
   .from("brickPiecesRemain")
   .select("*")
-  // .not("latest_year", "is", null)
-  // .order("latest_year", { ascending: false })
-  // .order("id", { ascending: true })
-  // .range(20, 3000 )
   
   console.log("db response:", response)
     
@@ -81,7 +60,6 @@ function makeCards(pieces) {
   document.getElementById("cards").innerHTML = "";
   const container = document.getElementById('cards');
   pieces.forEach(key =>  {    
-    // url = key["img"]
     url = `https://jbqrtvchsaonsmpwsjcb.supabase.co/storage/v1/object/public/brickPiecesImages/${key["part"]}.webp`
     const card = document.createElement('div');
         card.className = 'card';
@@ -98,18 +76,12 @@ function makeCards(pieces) {
         img.alt = '';
   
         const info = document.createElement('div');
-        // info.classList.add("inline-edge")
         info.classList.add("info")
         const title = document.createElement('h1');
         const subTitle = document.createElement('h1');
         subTitle.className = "copy"
         const details = document.createElement('details')
         const summary = document.createElement('summary')
-        // what was this + button for?
-        // const add = document.createElement('h1');
-        // add.innerText="+";
-        // add.classList.add("pointer")
-        // add.classList.add("no-select")
         const addInput = document.createElement('input');
         addInput.type="text";
         addInput.placeholder = "Suggest a name or category"
@@ -125,7 +97,7 @@ function makeCards(pieces) {
           }
         })
 
-        id = url.split('\\')[1].split('.')[0] //+"element"
+        id = key["part"]
         
         if (key["names"] == null) { partName = id }
         else {partName = key["names"][0]}
@@ -269,4 +241,5 @@ function filter() {
     // console.log(filterResults);
     makeCards(filterResults)
 }
+
 

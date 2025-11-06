@@ -82,7 +82,7 @@ function makeCards(pieces) {
   const container = document.getElementById('cards');
   pieces.forEach(key =>  {    
     // url = key["img"]
-    url = `pieces\\${key["part"]}.webp`
+    url = `https://jbqrtvchsaonsmpwsjcb.supabase.co/storage/v1/object/public/brickPiecesImages/${key["part"]}.webp`
     const card = document.createElement('div');
         card.className = 'card';
 
@@ -269,3 +269,4 @@ function filter() {
     // console.log(filterResults);
     makeCards(filterResults)
 }
+

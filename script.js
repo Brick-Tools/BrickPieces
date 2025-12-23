@@ -7,13 +7,13 @@ window.onload = function() {
 
 const supabaseUrl = 'https://jbqrtvchsaonsmpwsjcb.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpicXJ0dmNoc2FvbnNtcHdzamNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcwNjg4MTQsImV4cCI6MjA0MjY0NDgxNH0.KGIZTN_Dm1Z_8G_uMnUCto-7eVLDH0IgUaG8oUwMwu8';
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 pieces = []
 // piecesList = []
 async function getPieces() {
   // load first 20 to make loading time feel quicker
-  const { data: response0, error0 } = await supabase
+  const { data: response0, error0 } = await supabaseClient
     .from("brickPiecesStart")
     .select("*")
     console.log("db response0:", response0)
@@ -29,7 +29,7 @@ async function getPieces() {
 
 
   // load all remaining pieces
-  const { data: response, error } = await supabase
+  const { data: response, error } = await supabaseClient
   .from("brickPiecesRemain")
   .select("*")
   
@@ -152,7 +152,7 @@ async function appendRow(table, data) {
   // toast(message)
   // return
 
-  const { error } = await supabase
+  const { error } = await supabaseClient
   .from('pending')
   .insert({ table: table, data:data })
   if (error) {
@@ -241,5 +241,6 @@ function filter() {
     // console.log(filterResults);
     makeCards(filterResults)
 }
+
 
 

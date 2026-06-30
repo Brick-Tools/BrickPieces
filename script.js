@@ -72,6 +72,7 @@ function makeCards(pieces) {
         const img = document.createElement('img');
         // img.width = "1080"
         // img.height = "1080"
+        img.loading = "lazy";
         img.src = url;
         img.alt = '';
   
